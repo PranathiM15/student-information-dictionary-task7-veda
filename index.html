@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07121b">
+  <title>Student Dictionary Lab · Veda Technology Task 7</title>
+  <link rel="stylesheet" href="styles.css?v=3">
+</head>
+<body>
+  <div class="bg-orb orb-a"></div>
+  <div class="bg-orb orb-b"></div>
+  <div class="grid-overlay"></div>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#top" aria-label="Student Dictionary Lab home">
+        <div class="brand-mark">SD</div>
+        <div class="brand-copy">
+          <div class="brand-name">AURORA STUDENT LAB</div>
+          <div class="brand-task">Task 7 · Student Information Dictionary</div>
+        </div>
+      </a>
+
+      <nav class="topnav" aria-label="Primary navigation">
+        <a href="#entry">Add Record</a>
+        <a href="#directory">Dictionary</a>
+        <a href="#concept">Python Logic</a>
+      </nav>
+
+      <div class="online-pill"><span class="online-dot"></span><span>Python Analysis Online</span></div>
+    </div>
+  </header>
+
+  <main class="page" id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="kicker">VEDA TECHNOLOGY · AI &amp; ML TRACK</div>
+        <h1>Student Information <span>Dictionary</span></h1>
+        <p class="hero-lead">A clean student record workspace powered by Python dictionaries. Add, search, update and manage student information using a unique Student ID as the key.</p>
+        <div class="hero-tags">
+          <span>Python</span><span>Dictionary</span><span>CRUD Operations</span><span>JSON Storage</span>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <div class="hero-card-label">ACTIVE RECORDS</div>
+        <div class="hero-card-number" id="recordCount">0</div>
+        <div class="hero-card-foot"><span class="live-dot"></span> student entries in dictionary</div>
+      </aside>
+    </section>
+
+    <section class="panel entry" id="entry">
+      <div class="panel-heading">
+        <div>
+          <div class="section-kicker">MANUAL DATA ENTRY</div>
+          <h2 id="formTitle">Add student information</h2>
+          <p>Enter a record and save it directly into the Python dictionary.</p>
+        </div>
+        <button class="ghost-btn" id="loadExample" type="button">Load Example Data</button>
+      </div>
+
+      <form id="studentForm" autocomplete="off">
+        <div class="form-grid top-grid">
+          <label class="field">
+            <span>STUDENT ID</span>
+            <input id="studentId" placeholder="STU107" maxlength="20" required>
+          </label>
+          <label class="field field-wide">
+            <span>STUDENT NAME</span>
+            <input id="studentName" placeholder="Enter full name" maxlength="80" required>
+          </label>
+          <label class="field">
+            <span>COURSE</span>
+            <input id="studentCourse" placeholder="Computer Science" maxlength="80" required>
+          </label>
+          <label class="field">
+            <span>YEAR</span>
+            <select id="studentYear">
+              <option>1st Year</option><option>2nd Year</option><option>3rd Year</option><option>4th Year</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>GPA / 10</span>
+            <input id="studentGpa" type="number" min="0" max="10" step="0.01" value="8.50" required>
+          </label>
+        </div>
+
+        <div class="form-grid bottom-grid">
+          <label class="field">
+            <span>AGE</span>
+            <input id="studentAge" type="number" min="10" max="100" value="20" required>
+          </label>
+          <label class="field field-wide">
+            <span>EMAIL</span>
+            <input id="studentEmail" type="email" placeholder="student@example.com">
+          </label>
+          <label class="field">
+            <span>ATTENDANCE %</span>
+            <input id="studentAttendance" type="number" min="0" max="100" step="0.1" value="85" required>
+          </label>
+          <div class="form-actions">
+            <button class="ghost-btn" id="clearBtn" type="button">Clear</button>
+            <button class="primary-btn" id="saveBtn" type="submit"><span id="saveBtnText">Add Student</span><span class="btn-arrow">→</span></button>
+          </div>
+        </div>
+
+        <div class="form-helper"><span class="helper-check">✓</span><span id="formNote">Student ID becomes the unique dictionary key. Existing IDs cannot be duplicated.</span></div>
+      </form>
+    </section>
+
+    <section class="stats" aria-label="Student statistics">
+      <article class="stat-card">
+        <div class="stat-icon">#</div>
+        <div class="stat-content"><div class="stat-label">Total Students</div><div class="stat-value" id="totalStudents">0</div><div class="stat-note">records in dictionary</div></div>
+        <div class="stat-accent"></div>
+      </article>
+      <article class="stat-card">
+        <div class="stat-icon">μ</div>
+        <div class="stat-content"><div class="stat-label">Average GPA</div><div class="stat-value" id="avgGpa">0.00</div><div class="stat-note">out of 10</div></div>
+        <div class="stat-accent"></div>
+      </article>
+      <article class="stat-card">
+        <div class="stat-icon">↑</div>
+        <div class="stat-content"><div class="stat-label">Highest GPA</div><div class="stat-value" id="highestGpa">0.00</div><div class="stat-note">best academic score</div></div>
+        <div class="stat-accent"></div>
+      </article>
+      <article class="stat-card">
+        <div class="stat-icon">◎</div>
+        <div class="stat-content"><div class="stat-label">Avg. Attendance</div><div class="stat-value" id="avgAttendance">0%</div><div class="stat-note">across all students</div></div>
+        <div class="stat-accent"></div>
+      </article>
+    </section>
+
+    <section class="workspace" id="directory">
+      <div class="panel directory-panel">
+        <div class="panel-heading directory-heading">
+          <div>
+            <div class="section-kicker">STUDENT DIRECTORY</div>
+            <h2>Dictionary records</h2>
+            <p>Search every student by ID, name, course or year.</p>
+          </div>
+          <div class="record-chip"><strong id="matchCount">0</strong><span>matches</span></div>
+        </div>
+
+        <div class="toolbar">
+          <label class="search-wrap" for="searchInput">
+            <span class="search-icon">⌕</span>
+            <input id="searchInput" type="search" placeholder="Search student ID, name, course or year...">
+            <span class="search-hint">⌘ K</span>
+          </label>
+          <button class="ghost-btn" id="refreshBtn" type="button">↻ Refresh</button>
+        </div>
+
+        <div class="table-card">
+          <table>
+            <thead>
+              <tr><th>STUDENT</th><th>COURSE</th><th>YEAR</th><th>ATTENDANCE</th><th>GPA</th><th>ACTIONS</th></tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+          <div class="empty" id="emptyState" hidden>
+            <div class="empty-mark">{ }</div>
+            <h3>No student records found</h3>
+            <p>Try another search or add a new record above.</p>
+          </div>
+        </div>
+      </div>
+
+      <aside class="side-stack" id="concept">
+        <div class="panel mini-panel dictionary-preview">
+          <div class="section-kicker">PYTHON DICTIONARY</div>
+          <h3>How the structure works</h3>
+          <p>The Student ID is the key. The complete student profile is stored as the value.</p>
+          <div class="code-window">
+            <div class="code-bar"><span>students.py</span><span>● ● ●</span></div>
+            <pre><span class="c-purple">students</span> = {
+  <span class="c-cyan">"STU107"</span>: {
+    <span class="c-purple">"name"</span>: <span class="c-green">"Aarav Rao"</span>,
+    <span class="c-purple">"course"</span>: <span class="c-green">"Computer Science"</span>,
+    <span class="c-purple">"year"</span>: <span class="c-green">"2nd Year"</span>,
+    <span class="c-purple">"gpa"</span>: <span class="c-orange">8.7</span>
+  }
+}</pre>
+          </div>
+        </div>
+
+        <div class="panel mini-panel flow-panel">
+          <div class="section-kicker">TASK FLOW</div>
+          <div class="flow-item"><span>01</span><div><strong>Store</strong><small>Use a dictionary with unique IDs</small></div></div>
+          <div class="flow-item"><span>02</span><div><strong>Search</strong><small>Find records by key or student details</small></div></div>
+          <div class="flow-item"><span>03</span><div><strong>Update</strong><small>Modify existing values safely</small></div></div>
+          <div class="flow-item"><span>04</span><div><strong>Persist</strong><small>Save data into students.json</small></div></div>
+        </div>
+      </aside>
+    </section>
+
+    <footer><span>Python + HTML + CSS + JavaScript</span><span>Veda Technology · AI &amp; ML Track · Task 7</span></footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js?v=3"></script>
+</body>
+</html>

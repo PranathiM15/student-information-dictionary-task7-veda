@@ -1,0 +1,82 @@
+{
+  "STU101": {
+    "id": "STU101",
+    "name": "Ananya Rao",
+    "age": 19,
+    "course": "Computer Science",
+    "year": "1st Year",
+    "email": "ananya.rao@example.com",
+    "attendance": 92,
+    "gpa": 9.1
+  },
+  "STU102": {
+    "id": "STU102",
+    "name": "Rahul Mehta",
+    "age": 20,
+    "course": "Information Science",
+    "year": "2nd Year",
+    "email": "rahul.mehta@example.com",
+    "attendance": 87,
+    "gpa": 8.4
+  },
+  "STU103": {
+    "id": "STU103",
+    "name": "Meera Nair",
+    "age": 21,
+    "course": "Artificial Intelligence",
+    "year": "3rd Year",
+    "email": "meera.nair@example.com",
+    "attendance": 95,
+    "gpa": 9.5
+  },
+  "STU104": {
+    "id": "STU104",
+    "name": "Kiran Kumar",
+    "age": 20,
+    "course": "Electronics",
+    "year": "2nd Year",
+    "email": "kiran.kumar@example.com",
+    "attendance": 84,
+    "gpa": 8.0
+  },
+  "STU105": {
+    "id": "STU105",
+    "name": "Diya Patel",
+    "age": 19,
+    "course": "Computer Science",
+    "year": "1st Year",
+    "email": "diya.patel@example.com",
+    "attendance": 90,
+    "gpa": 9.0
+  },
+  "STU106": {
+    "id": "STU106",
+    "name": "Arjun Singh",
+    "age": 22,
+    "course": "Mechanical Engineering",
+    "year": "4th Year",
+    "email": "arjun.singh@example.com",
+    "attendance": 78,
+    "gpa": 7.8
+  },
+  "STU107": {
+    "id": "STU107",
+    "name": "pranav",
+    "age": 20,
+    "course": "computer science",
+    "year": "2nd Year",
+    "email": "pranav@gmail.com",
+    "attendance": 90.0,
+    "gpa": 9.8
+  },
+  "STU108": {
+    "id": "STU108",
+    "name": "likith Kumar",
+    "age": 20,
+    "course": "Computer Science",
+    "year": "2nd Year",
+    "email": "liki@example.com",
+    "attendance": 90.0,
+    "gpa": 9.6
+  }
+}
